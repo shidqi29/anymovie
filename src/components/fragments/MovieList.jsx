@@ -13,14 +13,14 @@ const Header = ({ id, title, release_date }) => {
           {title}
         </h2>
       </Link>
-      <p className="text-gray-400 font-light text-xs mb-2">{release_date}</p>
+      <p className="text-secondary font-light text-xs mb-2">{release_date}</p>
     </div>
   );
 };
 
 const Body = ({ id, image, title, children }) => {
   return (
-    <div className="flex border-b border-gray-400 pb-4">
+    <div className="flex border-b border-secondary pb-4">
       <Link to={`/movie/${id}`} className="h-[253px] w-[163px] mr-[15px]">
         <img
           src={image}
@@ -28,7 +28,7 @@ const Body = ({ id, image, title, children }) => {
           className=" object-cover rounded-lg h-full "
         />
       </Link>
-      <div className="text-gray-400 font-light text-sm w-full">{children}</div>
+      <div className="text-secondary font-light text-sm w-full">{children}</div>
     </div>
   );
 };
