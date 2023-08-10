@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const MovieList = ({ children }) => {
+const ListFragment = ({ children }) => {
   return <div className="w-full px-8 py-3 ">{children}</div>;
 };
 
@@ -37,10 +37,10 @@ const Body = ({ id, image, title, children }) => {
   );
 };
 
-MovieList.Header = Header;
-MovieList.Body = Body;
+ListFragment.Header = Header;
+ListFragment.Body = Body;
 
-MovieList.propTypes = {
+ListFragment.propTypes = {
   children: PropTypes.any,
 };
 Header.propTypes = {
@@ -55,4 +55,4 @@ Body.propTypes = {
   children: PropTypes.any,
 };
 
-export default MovieList;
+export default ListFragment;

@@ -1,9 +1,17 @@
 /* eslint-disable react/prop-types */
 
-const MainLayout = ({children}) => {
-  return (
-    <main className='container bg-primary mx-auto flex'>{children}</main>
-  )
-}
+import { Outlet } from "react-router-dom";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 
-export default MainLayout
+const MainLayout = () => {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
+
+export default MainLayout;

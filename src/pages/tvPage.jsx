@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import { DiscoverMovie } from "../services/DiscoverMovie.service";
+import { DiscoverTV } from "../services/DiscoverTV.service";
 import ListFragment from "../components/fragments/ListFragment";
 import LoadingSpinner from "../components/elements/loading/Loading";
 import Poster from "../components/elements/poster/Poster";
 
-const HomePage = () => {
-  const [movies, setMovies] = useState(null);
+const TVPage = () => {
+  const [series, setSeries] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const sort_by = ["popularity.desc", "vote_average.desc"];
-  const getMovies = async () => {
+  const getTVSeries = async () => {
     try {
-      const data = await DiscoverMovie({ page: 1, sort_by: sort_by[0] });
-      setMovies(data.results);
+      const data = await DiscoverTV({ page: 1, sort_by: sort_by[1] });
+      setSeries(data.results);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -19,43 +19,40 @@ const HomePage = () => {
   };
 
   const renderPoster = () => {
-    return movies
+    return series
       .slice(0, 12)
-      .map((movie) => (
+      .map((tv) => (
         <Poster
-          key={movie.id}
+          key={tv.id}
           image={
-            movie.poster_path !== null
-              ? `https://image.tmdb.org/t/p/w400/${movie.poster_path}`
+            tv.poster_path !== null
+              ? `https://image.tmdb.org/t/p/w400/${tv.poster_path}`
               : "https://via.placeholder.com/400"
           }
-          title={movie.title}
+          title={tv.title}
         />
       ));
   };
 
-  const renderMovieList = () => {
-    return movies.map((movie) => (
-      <ListFragment key={movie.id}>
-        <ListFragment.Header
-          title={movie.title}
-          release_date={movie.release_date}
-        />
+  const renderSeriesList = () => {
+    return series.map((tv) => (
+      <ListFragment key={tv.id}>
+        <ListFragment.Header title={tv.name} release_date={tv.first_air_date} />
         <ListFragment.Body
           image={
-            movie.poster_path !== null
-              ? `https://image.tmdb.org/t/p/w400/${movie.poster_path}`
+            tv.poster_path !== null
+              ? `https://image.tmdb.org/t/p/w400/${tv.poster_path}`
               : "https://via.placeholder.com/400"
           }
-          title={movie.title}>
-          {movie.overview}
+          title={tv.name}>
+          {tv.overview}
         </ListFragment.Body>
       </ListFragment>
     ));
   };
 
   useEffect(() => {
-    getMovies();
+    getTVSeries();
   }, []);
 
   return (
@@ -68,10 +65,10 @@ const HomePage = () => {
         <div className="flex">
           <div className="w-4/6">
             <section className="flex flex-wrap gap-2 w-full px-8 py-5">
-              {movies.length > 0 && renderPoster()}
+              {series.length > 0 && renderPoster()}
             </section>
             <section className="w-full flex flex-wrap ">
-              {movies.length > 0 && renderMovieList()}
+              {series.length > 0 && renderSeriesList()}
             </section>
           </div>
           <aside className="bg-white w-2/6">
@@ -83,4 +80,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default TVPage;
