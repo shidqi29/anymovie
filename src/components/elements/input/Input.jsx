@@ -4,7 +4,7 @@ const Input = ({ type, placeholder, name, classname }) => {
   return (
     <input
       type={type}
-      className={`text-sm rounded-l-lg w-full py-1 px-2 mr-2 text-primary placeholder:opacity-80 ${classname}`}
+      className={`text-sm rounded-l-lg w-full py-1 px-3 mr-2 text-primary placeholder:opacity-80 ${classname}`}
       placeholder={placeholder}
       name={name}
     />

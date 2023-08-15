@@ -62,19 +62,19 @@ const TVPage = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <div className="flex">
-          <div className="w-4/6">
-            <section className="flex flex-wrap gap-2 w-full px-8 py-5">
+        <main className="md:flex">
+          <div className="w-full">
+            <section className="hidden md:flex flex-wrap gap-2 w-full px-8 py-5 justify-center">
               {series.length > 0 && renderPoster()}
             </section>
             <section className="w-full flex flex-wrap ">
               {series.length > 0 && renderSeriesList()}
             </section>
           </div>
-          <aside className="bg-white w-2/6">
+          <aside className="bg-white w-full md:w-2/6">
             <div>Tes</div>
           </aside>
-        </div>
+        </main>
       )}
     </>
   );
