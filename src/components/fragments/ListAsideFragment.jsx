@@ -2,15 +2,17 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { ClockIcon } from "@heroicons/react/24/outline";
 
-const ListFragment = ({ children }) => {
-  return <div className="w-full px-2 py-2 ">{children}</div>;
+const ListAsideFragment = ({ children }) => {
+  return (
+    <div className="w-full px-2 py-2 border-b border-accent">{children}</div>
+  );
 };
 
 const Header = ({ id, title, release_date }) => {
   return (
     <div>
       <Link to={`/movie/${id}`}>
-        <h2 className="text-white font-bold text-lg tracking-widest mb-2">
+        <h2 className="text-white font-medium text-base tracking-wide mb-2">
           {title}
         </h2>
       </Link>
@@ -24,12 +26,12 @@ const Header = ({ id, title, release_date }) => {
 
 const Body = ({ id, image, title, children }) => {
   return (
-    <div className="flex border-b border-accent pb-4">
-      <Link to={`/movie/${id}`} className="h-64 w-56 mr-4">
+    <div className="flex pb-4">
+      <Link to={`/movie/${id}`} className="h-28 w-28 mr-2">
         <img
           src={image}
           alt={title}
-          className=" object-cover rounded-lg h-full hover:opacity-60 duration-300"
+          className=" object-cover rounded-lg  hover:opacity-60 duration-300"
         />
       </Link>
       <div className="text-secondary font-light text-xs w-full text-justify">
@@ -39,10 +41,10 @@ const Body = ({ id, image, title, children }) => {
   );
 };
 
-ListFragment.Header = Header;
-ListFragment.Body = Body;
+ListAsideFragment.Header = Header;
+ListAsideFragment.Body = Body;
 
-ListFragment.propTypes = {
+ListAsideFragment.propTypes = {
   children: PropTypes.any,
 };
 Header.propTypes = {
@@ -57,4 +59,4 @@ Body.propTypes = {
   children: PropTypes.any,
 };
 
-export default ListFragment;
+export default ListAsideFragment;

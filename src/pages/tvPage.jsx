@@ -3,6 +3,7 @@ import { DiscoverTV } from "../services/DiscoverTV.service";
 import ListFragment from "../components/fragments/ListFragment";
 import LoadingSpinner from "../components/elements/loading/Loading";
 import Poster from "../components/elements/poster/Poster";
+import Aside from "../components/layouts/Aside";
 
 const TVPage = () => {
   const [series, setSeries] = useState(null);
@@ -71,9 +72,7 @@ const TVPage = () => {
               {series.length > 0 && renderSeriesList()}
             </section>
           </div>
-          <aside className="bg-white w-full md:w-2/6">
-            <div>Tes</div>
-          </aside>
+          <Aside />
         </main>
       )}
     </>

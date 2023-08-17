@@ -3,6 +3,7 @@ import { DiscoverMovie } from "../services/DiscoverMovie.service";
 import ListFragment from "../components/fragments/ListFragment";
 import LoadingSpinner from "../components/elements/loading/Loading";
 import Poster from "../components/elements/poster/Poster";
+import Aside from "../components/layouts/Aside";
 
 const HomePage = () => {
   const [movies, setMovies] = useState(null);
@@ -67,16 +68,14 @@ const HomePage = () => {
       ) : (
         <main className="md:flex">
           <div className="w-full">
-            <section className="flex flex-wrap gap-2 w-full px-8 py-5 justify-center ">
+            <section className=" flex-wrap gap-2 w-full px-8 py-5 justify-center hidden sm:flex">
               {movies.length > 0 && renderPoster()}
             </section>
-            <section className="w-full flex flex-wrap ">
+            <section className="w-full flex flex-wrap px-4">
               {movies.length > 0 && renderMovieList()}
             </section>
           </div>
-          <aside className="bg-white w-full md:w-2/6 ">
-            <div>Tes</div>
-          </aside>
+          <Aside />
         </main>
       )}
     </>
