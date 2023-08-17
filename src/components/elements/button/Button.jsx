@@ -3,7 +3,7 @@
 const Button = ({ children, classname, onClick = () => {}, type = "button",}) => {
     return (
       <button
-        className={`font-semibold rounded-md ${classname} text-white`}
+        className={` rounded-md ${classname} `}
         type={type}
         onClick={onClick}
       >
