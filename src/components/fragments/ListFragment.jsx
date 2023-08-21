@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { ClockIcon } from "@heroicons/react/24/outline";
+import { formattedDate } from "../../lib/utils";
 
 const ListFragment = ({ movies }) => {
   return (
@@ -14,7 +15,9 @@ const ListFragment = ({ movies }) => {
           </Link>
           <p className="text-secondary font-light text-xs mb-2 flex ">
             <ClockIcon className="h-4 w-4 mr-1 text-accent" />{" "}
-            <span className="text-secondary">{movie.release_date}</span>
+            <span className="text-secondary">
+              {formattedDate(movie.release_date)}
+            </span>
           </p>
           <div className="flex border-b border-accent pb-4 mb-8">
             <Link to={`/movie/${movie.id}`} className="h-64 w-56 mr-4">

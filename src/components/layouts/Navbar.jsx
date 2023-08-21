@@ -7,7 +7,7 @@ import { Fragment } from "react";
 const Navbar = () => {
   const navigation = [
     // { name: "Home", href: "/" },
-    { name: "Movies", href: "/movie" },
+    { name: "Movies", href: "/" },
     { name: "TV Show", href: "/tv-series" },
   ];
   return (

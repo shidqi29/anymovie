@@ -6,7 +6,7 @@ const Poster = ({ movies }) => {
     <div className="w-full flex flex-wrap gap-2 justify-center">
       {movies.results.slice(0, 12).map((movie) => (
         <div key={movie.id} className="w-24 ">
-          <Link to={`/movie/${movies.id}`} className="">
+          <Link to={`/movie/${movie.id}`} className="">
             <img
               src={
                 movie.poster_path !== null
