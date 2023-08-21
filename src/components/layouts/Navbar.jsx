@@ -12,13 +12,7 @@ const Navbar = () => {
   ];
   return (
     <>
-      <div className="w-full ">
-        <img
-          src="banner.jpg"
-          alt=""
-          className="object-cover w-full h-[45vh] bg-blend-darken"
-        />
-      </div>
+      
       <div className="fixed top-0 w-full right-0 bg-opacity-100 z-50">
         <Popover as="header">
           <div className="pt-2">
