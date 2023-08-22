@@ -9,8 +9,9 @@ import { ClockIcon } from "@heroicons/react/24/outline";
 const MovieDetail = () => {
   const { id } = useParams();
   const { error, isLoading, data: movie } = useFetch(`movie/${id}`);
+  const { data: movieVideo } = useFetch(`movie/${id}/videos`);
 
-  const movieUrl = `https://www.youtube.com/watch?v=${movie?.videos?.results[0]?.key}`;
+  const movieUrl = `https://www.youtube.com/watch?v=${movieVideo?.results[0].key}`;
   const genres = movie?.genres.map((genre, i) => {
     return (
       <div key={genre.id}>
@@ -45,11 +46,11 @@ const MovieDetail = () => {
                     <span>{getDuration(movie?.runtime)}</span>
                   ) : null}
                 </div>
-                <div className="flex gap-2 ">{genres}</div>
+                <div className="flex gap-2 mb-4">{genres}</div>
+            <VideoPlayer url={movieUrl} />
               </div>
               <p className="text-secondary">{movie?.overview}</p>
             </div>
-            <VideoPlayer url={movieUrl} />
           </div>
         </>
       )}
