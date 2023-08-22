@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <footer className="px-6 text-sm">
-      <div className="px-3 md:px-0 text-center md:text-left text-white flex items-center py-4 md:py-8 ">
+    <footer className="px-6 text-sm bg-accent">
+      <div className="px-3 md:px-0 text-center md:text-left text-primary flex items-center py-4 md:py-8 ">
         <p>
           Built by <span className="font-semibold">Shidqi</span>. This project
           is a clone of website {""}
@@ -11,7 +11,8 @@ const Footer = () => {
             className="underline"
             rel="noreferrer">
             pahe.li
-          </a>{". "}
+          </a>
+          {". "}
           The source code is available on{" "}
           <a
             href="https://github.com/shidqi29/anymovie"
