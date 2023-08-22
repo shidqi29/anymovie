@@ -6,19 +6,13 @@ import { Fragment } from "react";
 
 const Navbar = () => {
   const navigation = [
-    { name: "Home", href: "/" },
-    { name: "Movies", href: "/movie" },
+    // { name: "Home", href: "/" },
+    { name: "Movies", href: "/" },
     { name: "TV Show", href: "/tv-series" },
   ];
   return (
     <>
-      <div className="w-full ">
-        <img
-          src="banner.jpg"
-          alt=""
-          className="object-cover w-full h-80 bg-blend-darken"
-        />
-      </div>
+      
       <div className="fixed top-0 w-full right-0 bg-opacity-100 z-50">
         <Popover as="header">
           <div className="pt-2">
@@ -35,12 +29,12 @@ const Navbar = () => {
                 {/*Desktop Navbar */}
                 <div
                   id="nav"
-                  className="mx-auto space-x-2.5 rounded-full px-2 py-1 hidden md:flex  bg-[#171717] bg-opacity-50">
+                  className="mx-auto space-x-2.5 rounded-full px-2 py-1 hidden md:flex  bg-[#171717] bg-opacity-50 backdrop-blur-sm">
                   <div className="absolute z-0"></div>
                   {navigation.map((item) => (
                     <Link
                       key={item.name}
-                      className="py-2 px-3 text-base text-secondary font-semibold leading-140 underline-offset-2 hover:opacity-70 hover:text-accent transition focus:text-accent focus:border-b border-accent"
+                      className="py-2 px-3 text-base text-secondary font-semibold leading-140 underline-offset-2 hover:opacity-70 hover:text-accent transition focus:text-accent hover:border-b focus:border-b border-accent"
                       to={item.href}>
                       {item.name}
                     </Link>
@@ -72,7 +66,7 @@ const Navbar = () => {
                     />
                   </div>
                   <div className="-mr-2">
-                    <Popover.Button className="inline-flex items-center justify-center rounded-md bg-[#171717] bg-opacity-50 p-2 text-accent hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent" >
+                    <Popover.Button className="inline-flex items-center justify-center rounded-md bg-[#171717] bg-opacity-50 p-2 text-accent hover:bg-opacity-70 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent">
                       <span className="sr-only">Close menu</span>
                       <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
