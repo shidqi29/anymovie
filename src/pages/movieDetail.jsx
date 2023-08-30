@@ -47,7 +47,7 @@ const MovieDetail = () => {
                   ) : null}
                 </div>
                 <div className="flex gap-2 mb-4">{genres}</div>
-              <p className="text-secondary">{movie?.overview}</p>
+              <p className="text-secondary text-base">{movie?.overview}</p>
               </div>
             <VideoPlayer url={movieUrl} />
             </div>

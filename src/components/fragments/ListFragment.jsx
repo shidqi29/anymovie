@@ -31,7 +31,7 @@ const ListFragment = ({ movies }) => {
                 className=" object-cover rounded-lg h-full hover:opacity-60 duration-300"
               />
             </Link>
-            <div className="text-secondary font-light text-xs w-full text-justify">
+            <div className="text-secondary font-light text-sm w-full text-justify">
               {movie.overview}
             </div>
           </div>
