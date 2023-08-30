@@ -1,51 +1,26 @@
 import { Tab } from "@headlessui/react";
-import { fetcher } from "../../services/movie";
-import { useState } from "react";
-import { useEffect } from "react";
 import ListAsideFragment from "../fragments/ListAsideFragment";
+import useFetch from "../../hooks/useFetch";
+import { useState, useEffect } from "react";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const Aside = () => {
-  const [trendingMovies, setTrendingMovies] = useState([]);
-  const [popularMovies, setPopularMovies] = useState([]);
-  const [upcomingMovies, setUpcomingMovies] = useState([]);
-
-  const fetchMovies = async (endpoint, setter) => {
-    try {
-      const data = await fetcher(endpoint);
-      setter(data.results);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [popularMovie, setPopularMovie] = useState(null);
+  const [trendingMovie, setTrendingMovie] = useState(null);
+  const [upcomingMovie, setUpcomingMovie] = useState(null);
+  const { data: popularMovieData } = useFetch("movie/popular");
+  const { data: trendingMovieData } = useFetch("trending/all/day");
+  const { data: upcomingMovieData } = useFetch("movie/upcoming");
 
   useEffect(() => {
-    fetchMovies("trending/movie/day", setTrendingMovies);
-    fetchMovies("movie/popular", setPopularMovies);
-    fetchMovies("movie/upcoming", setUpcomingMovies);
-  }, []);
+    setPopularMovie(popularMovieData);
+    setTrendingMovie(trendingMovieData);
+    setUpcomingMovie(upcomingMovieData);
+  }, [popularMovieData, trendingMovieData, upcomingMovieData]);
 
   const tabs = ["Trending", "Popular", "Upcoming"];
-
-  const renderMoviePosters = (movies) =>
-    movies.slice(0, 6).map((movie) => (
-      <ListAsideFragment key={movie.id}>
-        <ListAsideFragment.Body
-          image={
-            movie.poster_path !== null
-              ? `https://image.tmdb.org/t/p/w400/${movie.poster_path}`
-              : "https://via.placeholder.com/400"
-          }
-          title={movie.title}>
-          <ListAsideFragment.Header
-            title={movie.title}
-            release_date={movie.release_date}
-          />
-        </ListAsideFragment.Body>
-      </ListAsideFragment>
-    ));
 
   return (
     <aside className="bg-primary py-5 md:mr-4 w-full md:w-2/6 ">
@@ -68,15 +43,15 @@ const Aside = () => {
             ))}
           </Tab.List>
           <Tab.Panels>
-            {[trendingMovies, popularMovies, upcomingMovies].map(
-              (movies, index) => (
-                <Tab.Panel key={index}>
-                  <div className="flex flex-wrap gap-2">
-                    {renderMoviePosters(movies)}
-                  </div>
-                </Tab.Panel>
-              )
-            )}
+            <Tab.Panel>
+              {trendingMovie && <ListAsideFragment movies={trendingMovie} />}
+            </Tab.Panel>
+            <Tab.Panel>
+              {popularMovie && <ListAsideFragment movies={popularMovie} />}
+            </Tab.Panel>
+            <Tab.Panel>
+              {upcomingMovie && <ListAsideFragment movies={upcomingMovie} />}
+            </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>
       </div>
