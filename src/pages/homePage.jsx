@@ -31,10 +31,10 @@ const HomePage = () => {
           <main className="md:flex">
             <div className="w-full">
               <section className="w-full px-8 py-5 hidden sm:flex">
-                {movie && <Poster movies={movie} />}
+                {movie && <Poster datas={movie} />}
               </section>
               <section className="w-full flex flex-wrap px-4">
-                {movie && <ListFragment movies={movie} />}
+                {movie && <ListFragment datas={movie} />}
               </section>
             </div>
             <Aside />
