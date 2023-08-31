@@ -10,13 +10,13 @@ const ListFragment = ({ datas }) => {
         <div key={data.id}>
           <Link to={`/movie/${data.id}`}>
             <h3 className="text-white font-bold text-lg tracking-widest mb-2">
-              {data.title}
+              {data.title || data.name}
             </h3>
           </Link>
           <p className="text-secondary font-light text-xs mb-2 flex ">
             <ClockIcon className="h-4 w-4 mr-1 text-accent" />{" "}
             <span className="text-secondary">
-              {formattedDate(data.release_date)}
+              {formattedDate(data.release_date || data.first_air_date)}
             </span>
           </p>
           <div className="flex border-b border-accent pb-4 mb-8">
@@ -27,7 +27,7 @@ const ListFragment = ({ datas }) => {
                     ? `https://image.tmdb.org/t/p/w400/${data.poster_path}`
                     : "https://via.placeholder.com/400"
                 }
-                alt={data.title}
+                alt={data.title || data.name}
                 className=" object-cover rounded-lg h-full hover:opacity-60 duration-300"
               />
             </Link>

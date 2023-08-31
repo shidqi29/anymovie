@@ -13,7 +13,7 @@ const Poster = ({ datas }) => {
                   ? `https://image.tmdb.org/t/p/w400/${data.poster_path}`
                   : "https://via.placeholder.com/400"
               }
-              alt={data.title}
+              alt={data.title || data.name}
               className=" object-cover rounded-lg w-full h-full hover:opacity-60 hover:scale-105 duration-300 border-b border-accent"
             />
           </Link>
