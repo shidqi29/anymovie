@@ -34,10 +34,10 @@ const TvPage = () => {
           <main className="md:flex">
             <div className="w-full">
               <section className="w-full px-8 py-5 hidden sm:flex">
-                {tvShow && <Poster datas={tvShow} />}
+                {tvShow && <Poster datas={tvShow} category="tv-series"/>}
               </section>
               <section className="w-full flex flex-wrap px-4">
-                {tvShow && <ListFragment datas={tvShow} />}
+                {tvShow && <ListFragment datas={tvShow} category="tv-series"/>}
               </section>
             </div>
             <Aside />

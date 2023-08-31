@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const Poster = ({ datas }) => {
+const Poster = ({ datas, category }) => {
   return (
     <div className="w-full flex flex-wrap gap-2 justify-center">
       {datas.results.slice(0, 12).map((data) => (
         <div key={data.id} className="w-24 ">
-          <Link to={`/movie/${data.id}`} className="">
+          <Link to={`/${category}/${data.id}`}>
             <img
               src={
                 data.poster_path !== null
@@ -25,6 +25,7 @@ const Poster = ({ datas }) => {
 
 Poster.propTypes = {
   datas: PropTypes.any,
+  category: PropTypes.string,
 };
 
 export default Poster;

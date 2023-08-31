@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { ClockIcon } from "@heroicons/react/24/outline";
 import { formattedDate } from "../../lib/utils";
 
-const ListFragment = ({ datas }) => {
+const ListFragment = ({ datas, category }) => {
   return (
     <div className="w-full px-2 py-2 ">
       {datas.results.map((data) => (
         <div key={data.id}>
-          <Link to={`/movie/${data.id}`}>
+          <Link to={`/${category}/${data.id}`}>
             <h3 className="text-white font-bold text-lg tracking-widest mb-2">
               {data.title || data.name}
             </h3>
@@ -20,7 +20,7 @@ const ListFragment = ({ datas }) => {
             </span>
           </p>
           <div className="flex border-b border-accent pb-4 mb-8">
-            <Link to={`/data/${data.id}`} className="h-64 w-56 mr-4">
+            <Link to={`/${category}/${data.id}`} className="h-64 w-56 mr-4">
               <img
                 src={
                   data.poster_path !== null
@@ -43,6 +43,7 @@ const ListFragment = ({ datas }) => {
 
 ListFragment.propTypes = {
   datas: PropTypes.any,
+  category: PropTypes.string,
 };
 
 export default ListFragment;
