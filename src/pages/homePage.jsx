@@ -4,9 +4,14 @@ import Poster from "../components/elements/poster/Poster";
 import Aside from "../components/layouts/Aside";
 import useFetch from "../hooks/useFetch";
 import NotFound from "./notFound";
+import { useEffect } from "react";
 
 const HomePage = () => {
   const { error, isLoading, data: movie } = useFetch("movie/popular");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

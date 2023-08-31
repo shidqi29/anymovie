@@ -4,10 +4,13 @@ import Poster from "../components/elements/poster/Poster";
 import Aside from "../components/layouts/Aside";
 import useFetch from "../hooks/useFetch";
 import NotFound from "./notFound";
+import { useEffect } from "react";
 
-const HomePage = () => {
+const TvPage = () => {
   const { error, isLoading, data: tvShow } = useFetch("tv/popular");
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       {isLoading && (
@@ -45,4 +48,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default TvPage;
