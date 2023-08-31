@@ -11,7 +11,7 @@ const Aside = () => {
   const [trendingMovie, setTrendingMovie] = useState(null);
   const [upcomingMovie, setUpcomingMovie] = useState(null);
   const { data: popularMovieData } = useFetch("movie/popular");
-  const { data: trendingMovieData } = useFetch("trending/all/day");
+  const { data: trendingMovieData } = useFetch("trending/movie/day");
   const { data: upcomingMovieData } = useFetch("movie/upcoming");
 
   useEffect(() => {
