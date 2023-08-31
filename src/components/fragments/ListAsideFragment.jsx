@@ -24,12 +24,12 @@ const ListAsideFragment = ({ movies }) => {
             </Link>
             <div className="flex flex-col">
               <Link to={`/movie/${movie.id}`}>
-                <h2 className="text-white mb-2">{movie.title}</h2>
+                <h2 className="text-white text-sm font-medium mb-2">{movie.title || movie.name}</h2>
               </Link>
               <div className="text-secondary font-light text-xs w-full flex">
                 <ClockIcon className="h-3 w-3 mr-1 text-accent " />{" "}
-                <span className="text-secondary">
-                  {formattedDate(movie.release_date)}
+                <span className="text-secondary ">
+                  {formattedDate(movie.release_date || movie.first_air_date)}
                 </span>
               </div>
             </div>
