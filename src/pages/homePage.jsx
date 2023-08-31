@@ -4,9 +4,14 @@ import Poster from "../components/elements/poster/Poster";
 import Aside from "../components/layouts/Aside";
 import useFetch from "../hooks/useFetch";
 import NotFound from "./notFound";
+import { useEffect } from "react";
 
 const HomePage = () => {
   const { error, isLoading, data: movie } = useFetch("movie/popular");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -31,10 +36,10 @@ const HomePage = () => {
           <main className="md:flex">
             <div className="w-full">
               <section className="w-full px-8 py-5 hidden sm:flex">
-                {movie && <Poster movies={movie} />}
+                {movie && <Poster datas={movie} category="movie"/>}
               </section>
               <section className="w-full flex flex-wrap px-4">
-                {movie && <ListFragment movies={movie} />}
+                {movie && <ListFragment datas={movie} category="movie" />}
               </section>
             </div>
             <Aside />

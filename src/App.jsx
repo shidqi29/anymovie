@@ -4,6 +4,7 @@ import MainLayout from "./components/layouts/MainLayout";
 import TVPage from "./pages/tvPage";
 import NotFound from "./pages/notFound";
 import MovieDetail from "./pages/movieDetail";
+import TVDetail from "./pages/tvDetail";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="/movie/:id" element={<MovieDetail />} />
             <Route path="/tv-series" element={<TVPage />} />
+            <Route path="/tv-series/:id" element={<TVDetail />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
