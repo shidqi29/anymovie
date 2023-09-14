@@ -13,6 +13,7 @@ const ListAsideFragment = ({ movies }) => {
               to={`/movie/${movie.id}`}
               className="h-32 w-18 aspect-[9/14] mr-2">
               <img
+                title={movie.title || movie.name}
                 src={
                   movie.poster_path !== null
                     ? `https://image.tmdb.org/t/p/w400/${movie.poster_path}`
@@ -24,7 +25,9 @@ const ListAsideFragment = ({ movies }) => {
             </Link>
             <div className="flex flex-col">
               <Link to={`/movie/${movie.id}`}>
-                <h2 className="text-white text-sm font-medium mb-2">{movie.title || movie.name}</h2>
+                <h2 className="text-white text-sm font-medium mb-2">
+                  {movie.title || movie.name}
+                </h2>
               </Link>
               <div className="text-secondary font-light text-xs w-full flex">
                 <ClockIcon className="h-3 w-3 mr-1 text-accent " />{" "}

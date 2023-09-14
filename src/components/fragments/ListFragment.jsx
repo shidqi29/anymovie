@@ -22,6 +22,7 @@ const ListFragment = ({ datas, category }) => {
           <div className="flex border-b border-accent pb-4 mb-8">
             <Link to={`/${category}/${data.id}`} className="h-64 w-56 mr-4">
               <img
+                title={data.title || data.name}
                 src={
                   data.poster_path !== null
                     ? `https://image.tmdb.org/t/p/w400/${data.poster_path}`
