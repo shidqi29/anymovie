@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const useFetch = (endpoint) => {
   const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const api = {
     base: import.meta.env.VITE_BASE_URL,
@@ -18,6 +18,7 @@ const useFetch = (endpoint) => {
     },
   };
   useEffect(() => {
+    setIsLoading(true);
     fetch(`${api.base}/${endpoint}`, options)
       .then((res) => {
         if (!res.ok) {
@@ -26,7 +27,6 @@ const useFetch = (endpoint) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setData(data);
         setIsLoading(false);
         setError(null);
